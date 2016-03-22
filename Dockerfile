@@ -8,7 +8,6 @@ RUN curl -sS https://getcomposer.org/installer | php \
     && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
 RUN docker-php-ext-install mbstring \
-	&& docker-php-ext-install mcrypt \
 	&& docker-php-ext-install mysql \
 	&& docker-php-ext-install mysqli \
 	&& docker-php-ext-install pdo_mysql \
