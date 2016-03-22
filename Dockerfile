@@ -7,6 +7,15 @@ RUN curl -sS https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/ \
     && ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
 
+
+RUN docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd
+RUN docker-php-ext-configure mysqli --with-mysqli=mysqlnd
+
 RUN docker-php-ext-install mbstring
+
+RUN apt-get update
+RUN apt-get install -y libmcrypt-dev
+RUN docker-php-ext-install mcrypt
+
+RUN apt-get install zlib1g-dev
 RUN docker-php-ext-install zip
-RUN make clean
