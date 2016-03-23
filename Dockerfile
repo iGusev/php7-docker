@@ -12,6 +12,7 @@ RUN docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd
 RUN docker-php-ext-configure mysqli --with-mysqli=mysqlnd
 
 RUN docker-php-ext-install mbstring
+RUN docker-php-ext-install bcmath
 
 RUN apt-get update
 RUN apt-get install -y libmcrypt-dev
