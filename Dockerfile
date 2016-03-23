@@ -23,6 +23,9 @@ RUN docker-php-ext-install zip
 RUN apt-get install -y git
 
 RUN mkdir /root/.ssh/
-RUN ssh-keyscan -p2200 $GITPRIVATEHOST > /root/.ssh/known_hosts
 
 RUN  echo "    IdentityFile /root/.ssh/id_rsa" >> /etc/ssh/ssh_config
+
+COPY ./entrypoint.sh /
+ENTRYPOINT ["/entrypoint.sh"]
+
