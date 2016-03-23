@@ -1,6 +1,11 @@
 #!/bin/bash
 set -e
 
+if [[ -z "$GITPRIVATEHOST" ]]
+then
+  ssh-keyscan -p2200 $GITPRIVATEHOST > /root/.ssh/known_hosts
+fi
+
 # With env variable WITH_XDEBUG=1 xdebug extension will be enabled
 [ ! -z "$WITH_XDEBUG" ] && docker-php-ext-enable xdebug
 
