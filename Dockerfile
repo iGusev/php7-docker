@@ -20,9 +20,9 @@ RUN docker-php-ext-install mcrypt
 RUN apt-get install zlib1g-dev
 RUN docker-php-ext-install zip
 
-#RUN apt-get install -y git
+RUN apt-get install -y git
 
-#RUN mkdir /root/.ssh/
+RUN mkdir /root/.ssh/
 
 #RUN  echo "    IdentityFile /root/.ssh/id_rsa" >> /etc/ssh/ssh_config
 
