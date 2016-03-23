@@ -25,6 +25,7 @@ RUN apt-get install -y git
 RUN mkdir /root/.ssh/
 
 RUN  echo "    IdentityFile /root/.ssh/id_rsa" >> /etc/ssh/ssh_config
+RUN  echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
 COPY ./entrypoint.sh /
 RUN /bin/bash /entrypoint.sh
