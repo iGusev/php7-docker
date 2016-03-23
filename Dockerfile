@@ -21,3 +21,4 @@ RUN apt-get install zlib1g-dev
 RUN docker-php-ext-install zip
 
 RUN apt-get install -y git
+RUN  echo "    IdentityFile ~/.ssh/id_rsa" >> /etc/ssh/ssh_config
