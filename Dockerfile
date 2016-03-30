@@ -13,6 +13,7 @@ RUN docker-php-ext-configure mysqli --with-mysqli=mysqlnd
 
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install bcmath
+RUN docker-php-ext-install xdebug
 
 RUN apt-get update
 RUN apt-get install -y libmcrypt-dev
