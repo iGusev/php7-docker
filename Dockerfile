@@ -13,7 +13,14 @@ RUN docker-php-ext-configure mysqli --with-mysqli=mysqlnd
 
 RUN docker-php-ext-install mbstring
 RUN docker-php-ext-install bcmath
-RUN docker-php-ext-install xdebug
+RUN curl -O https://xdebug.org/files/xdebug-2.4.0.tgz
+RUN tar -xzf xdebug-2.4.0.tgz \
+    && cd xdebug-2.4.0/ \
+    && phpize \
+    && ./configure --enable-xdebug \
+    && make \
+    && echo 'zend_extension="/xdebug-2.4.0/modules/xdebug.so"' > /usr/local/etc/php/conf.d/20-xdebug.ini
+
 
 RUN apt-get update
 RUN apt-get install -y libmcrypt-dev
