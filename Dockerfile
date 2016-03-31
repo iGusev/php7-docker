@@ -27,7 +27,8 @@ RUN apt-get install -y libmcrypt-dev
 RUN docker-php-ext-install mcrypt
 
 RUN apt-get install zlib1g-dev
-RUN docker-php-ext-install zip
+RUN docker-php-ext-install zip 
+RUN docker-php-ext-install redis
 
 RUN apt-get install -y git
 
