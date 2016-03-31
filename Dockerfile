@@ -27,8 +27,15 @@ RUN apt-get install -y libmcrypt-dev
 RUN docker-php-ext-install mcrypt
 
 RUN apt-get install zlib1g-dev
-RUN docker-php-ext-install zip 
-RUN docker-php-ext-install redis
+RUN docker-php-ext-install zip
+ENV PHPREDIS_VERSION php7
+
+RUN curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/$PHPREDIS_VERSION.tar.gz \
+    && tar xfz /tmp/redis.tar.gz \
+    && rm -r /tmp/redis.tar.gz \
+    && mv phpredis-$PHPREDIS_VERSION /usr/src/php/ext/redis \
+    && docker-php-ext-install redis
+
 
 RUN apt-get install -y git
 
