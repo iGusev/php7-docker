@@ -36,6 +36,10 @@ RUN curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/$P
     && mv phpredis-$PHPREDIS_VERSION /usr/src/php/ext/redis \
     && docker-php-ext-install redis
 
+# Install intl
+RUN apt-get install -y libicu-dev
+RUN pecl install intl
+RUN docker-php-ext-install intl
 
 RUN apt-get install -y git
 
