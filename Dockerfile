@@ -42,10 +42,8 @@ RUN pecl install intl
 RUN docker-php-ext-install intl
 
 # Install mongodb
-RUN cd /tmp/ && \
-    curl -O https://pecl.php.net/get/mongodb-1.1.6.tgz && \
-    tar zxvf mongodb-1.1.6.tgz && \
-    mv mongodb-1.1.6 /usr/src/php/ext/mongodb && \
+RUN apt-get install -y libssl-dev && \
+    pecl install mongodb && \
     echo 'extension=mongodb.so' > /usr/local/etc/php/conf.d/20-mongodb.ini
 
 RUN apt-get install -y git
