@@ -41,6 +41,9 @@ RUN apt-get install -y libicu-dev
 RUN pecl install intl
 RUN docker-php-ext-install intl
 
+
+RUN docker-php-ext-install mongodb
+
 RUN apt-get install -y git
 
 RUN mkdir /root/.ssh/
