@@ -41,7 +41,11 @@ RUN apt-get install -y libicu-dev
 RUN pecl install intl
 RUN docker-php-ext-install intl
 
-
+# Install mongodb
+RUN cd /tmp/ && \
+    curl -O https://pecl.php.net/get/mongodb-1.1.5.tgz && \
+    tar zxvf mongodb-1.1.5.tgz && \
+    mv mongodb-1.1.5 /usr/src/php/ext/mongodb
 RUN docker-php-ext-install mongodb
 
 RUN apt-get install -y git
