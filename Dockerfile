@@ -28,7 +28,7 @@ RUN docker-php-ext-install mcrypt
 
 RUN apt-get install zlib1g-dev
 RUN docker-php-ext-install zip
-ENV PHPREDIS_VERSION php7
+ENV PHPREDIS_VERSION 3.0.0
 
 RUN curl -L -o /tmp/redis.tar.gz https://github.com/phpredis/phpredis/archive/$PHPREDIS_VERSION.tar.gz \
     && tar xfz /tmp/redis.tar.gz \
