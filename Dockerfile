@@ -11,8 +11,7 @@ RUN curl -sS https://getcomposer.org/installer | php \
 RUN docker-php-ext-configure pdo_mysql --with-pdo-mysql=mysqlnd
 RUN docker-php-ext-configure mysqli --with-mysqli=mysqlnd
 
-RUN docker-php-ext-install mbstring
-RUN docker-php-ext-install bcmath
+RUN docker-php-ext-install mbstring bcmath
 RUN curl -O https://xdebug.org/files/xdebug-2.4.0.tgz
 RUN tar -xzf xdebug-2.4.0.tgz \
     && cd xdebug-2.4.0/ \
@@ -20,7 +19,6 @@ RUN tar -xzf xdebug-2.4.0.tgz \
     && ./configure --enable-xdebug \
     && make \
     && echo 'zend_extension="/xdebug-2.4.0/modules/xdebug.so"' > /usr/local/etc/php/conf.d/20-xdebug.ini
-
 
 RUN apt-get update
 RUN apt-get install -y libmcrypt-dev
@@ -54,7 +52,9 @@ RUN  echo "deb http://apt.postgresql.org/pub/repos/apt/ trusty-pgdg main 9.5" >>
     wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
 
 RUN apt-get update && \
-    apt-get install -y postgresql-9.5
+    apt-get install -y postgresql-9.5 libpq-dev
+
+RUN docker-php-ext-install pdo pdo_pgsql pgsql sockets intl
 
 USER postgres
 
